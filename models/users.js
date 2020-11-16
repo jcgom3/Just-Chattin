@@ -34,7 +34,7 @@ User.init(
     }
   },
 
-  /* Do i need this bit?
+  
   {
     hooks: {
       // set up beforeCreate lifecycle "hook" functionality
@@ -42,11 +42,12 @@ User.init(
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },
-
+      /*
       async beforeUpdate(updatedUserData) {
         updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
         return updatedUserData;
       }
+      */
     },
     sequelize,
     timestamps: false,
@@ -54,7 +55,6 @@ User.init(
     underscored: true,
     modelName: 'user'
   }
-  */
 );
 
 module.exports = User;
