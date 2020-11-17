@@ -94,6 +94,11 @@ io.on('connection', socket => {
         room: user.room,
         users: getRoomUsers(user.room)
       });
+
+       // destroy cookie
+       if (socket.request.session.loggedIn) {
+        socket.request.session.destroy() ;
+      };
     }
   });
 });
