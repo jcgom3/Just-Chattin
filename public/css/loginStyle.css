@@ -1,0 +1,36 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #dfc9e6;
+}  
+
+.form-input-material {
+    --input-default-border-color: #dfc9e6;
+    --input-border-bottom-color: w#dfc9e6;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 50px;
+    color: white;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    }
+   
+    h1 {
+        margin: 0 0 48px 0;
+      }
+
+    .form-input-material {
+      margin: 12px 0;
+    }
+  
+    .btn {
+      width: 100%;
+      margin: 18px 0 9px 0;
+    }
+  
