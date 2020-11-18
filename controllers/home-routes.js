@@ -4,8 +4,13 @@ const router = require('express').Router();
 
 router.get('/', (req, res) => {
 
-  // res.sendFile(path.join(__dirname, './public/index.html'));
-  res.render('selectRoom');
+  if (req.session.loggedIn){
+    res.render('selectRoom',{
+      // paste room to be rendered here
+      loggedIn: req.session.loggedIn
+    });
+  }
+  else res.redirect('/login');
         
 });
 
@@ -29,7 +34,7 @@ router.get('/signup', (req, res) => {
 
 router.get('/chat/:room', (req, res) => {
   res.render('chat');
-  console.log(req.session);
+  // console.log(req.session);
 })
 
 module.exports = router;

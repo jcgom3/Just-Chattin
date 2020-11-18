@@ -109,13 +109,6 @@ io.on('connection', socket => {
   });
 });
 
-
-app.post('/api/join', (req,res)=>{
-  req.session.username=req.body.username;
-  req.session.loggedIn = true;
-  console.log(req.session);
-  req.session.save();
-})
 app.use(routes)
 
 const PORT = process.env.PORT || 3000;

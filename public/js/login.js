@@ -14,7 +14,10 @@ async function loginFormHandler(event) {
             headers: {'Content-Type': 'application/json'}
         });
         if (response.ok) {
-            document.location.replace('/');
+            // Some delay is needed so that the server can update the session cookie
+            setTimeout(()=>{
+                document.location.replace('/')
+            },1000);
         } else {
             let result = await response.json()
             alert(result.message)

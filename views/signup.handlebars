@@ -1,35 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
-      integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
-      crossorigin="anonymous"
-    />
+  <link rel="stylesheet" href="css/signUpStyle.css" />
+
+
+<form class="signup-form">
   
-    <link rel="stylesheet" href="css/signUpStyle.css" />
-  </head>
+  <h1>Sign Up</h1>
 
-  <form class="signup-form">
+  <input type="text" id="username-signup" placeholder="Username" class="input-area"/>
+  <input type="password" id="password-signup" placeholder = "Password" class="input-area"/>
     
-    <h1>Sign Up</h1>
-
-    <input type="text" id="username-signup" placeholder="Username" class="input-area"/>
-    <input type="text" id="email-signup" placeholder="Email@Example.com" class="input-area"/>
-    <input type="password" id="password-signup" placeholder = "Password" class="input-area"/>
-      
-    <div>
-      <button type="submit" class="submit-button">Sign up</button>
-    </div>
-  </form>
-
   <div>
-   <a class="login-redirect" href="/login">Log in</a>
+    <button type="submit" class="submit-button">Sign up</button>
   </div>
+</form>
 
-  <script src="js/signup.js"></script>
+<div>
+  <a class="login-redirect" href="/login">Log in</a>
+</div>
 
-</html>
+<script src="js/signup.js"></script>
