@@ -4,8 +4,8 @@ const router = require('express').Router();
 
 router.get('/', (req, res) => {
 
-  res.sendFile(path.join(__dirname, './public/index.html'));
-  // res.render('homepage');
+  // res.sendFile(path.join(__dirname, './public/index.html'));
+  res.render('homepage');
         
 });
 
@@ -15,7 +15,7 @@ router.get('/login', (req, res) => {
       return;
     }
   
-    res.render('login');
+    res.render('homepage');
   });
 
 router.get('/signup', (req, res) => {
@@ -26,5 +26,9 @@ router.get('/signup', (req, res) => {
 
   res.render('signup');
 });
+
+router.get('/chat/room', (req, res) => {
+  res.render('chat');
+})
 
 module.exports = router;

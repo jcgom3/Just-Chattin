@@ -10,14 +10,14 @@ async function signupFormHandler(event) {
             method: 'post',
             body: JSON.stringify({
                 username,
-                email,
+                // email,
                 password
             }),
             headers: {'Content-Type': 'application/json'}
         });
         if (response.ok) {
             alert('Account created! Logging you in now.');
-            document.location.replace('/dashboard');
+            document.location.replace('/chat/room');
         } else {
             alert(response.statusText)
         }
