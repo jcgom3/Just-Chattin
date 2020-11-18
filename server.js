@@ -110,11 +110,6 @@ io.on('connection', socket => {
 });
 
 
-// app.get('/chat/:room',(req,res)=>{
-//   if (req.session.loggedIn) res.sendFile(path.join(__dirname, './public/chat.html'));
-//   else console.log('Error');
-// })
-
 app.post('/api/join', (req,res)=>{
   req.session.username=req.body.username;
   req.session.loggedIn = true;
