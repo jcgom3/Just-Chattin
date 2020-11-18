@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
 });
 
 router.delete('/:id',  (req, res) => {
-    Post.destroy({
+    Room.destroy({
       where: {
         id: req.params.id
       }
