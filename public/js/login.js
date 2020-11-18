@@ -14,7 +14,7 @@ async function loginFormHandler(event) {
             headers: {'Content-Type': 'application/json'}
         });
         if (response.ok) {
-            document.location.replace('/chat/room');
+            document.location.replace('/');
         } else {
             let result = await response.json()
             alert(result.message)
