@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 class Messages extends Model {}
@@ -13,12 +12,18 @@ Messages.init(
       primaryKey: true,
       autoIncrement: true
     },
-    room_number: {
-      type: DataTypes.INTEGER,
+    message: {
+      type: DataTypes.STRING,
       allowNull: false
     },
     
   },
+  {
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'post'
+  }
 );
 
 module.exports = Messages;

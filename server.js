@@ -8,6 +8,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 require('dotenv').config();
 const app = express();
 
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -96,16 +97,13 @@ io.on('connection', socket => {
       });
 
        // destroy cookie
-       if (socket.request.session.loggedIn) {
-        socket.request.session.destroy() ;
-      };
+      //  if (socket.request.session.loggedIn) {
+      //   socket.request.session.destroy() ;
+      // };
     }
   });
 });
 
-app.get('/',(req,res)=>{
-  res.sendFile(path.join(__dirname, './public/index.html'));
-})
 
 app.get('/chat/:room',(req,res)=>{
   if (req.session.loggedIn) res.sendFile(path.join(__dirname, './public/chat.html'));
@@ -115,6 +113,7 @@ app.get('/chat/:room',(req,res)=>{
 app.post('/api/join', (req,res)=>{
   req.session.username=req.body.username;
   req.session.loggedIn = true;
+  console.log(req.session);
   req.session.save();
 })
 app.use(routes)
