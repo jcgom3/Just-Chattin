@@ -37,7 +37,7 @@ socket.on('user logout',id =>{
   if (id.toString() === user_id) {
     setTimeout(()=>{
       document.location.replace('/')
-  },100);
+  },300);
   }
 })
 

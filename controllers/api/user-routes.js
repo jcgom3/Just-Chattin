@@ -2,20 +2,48 @@ const router = require('express').Router();
 const { User, Room } = require('../../models');
 // const withAuth = require('../../utils/auth');
 
+//  find a user is not really needed
+// router.get('/:id', (req, res) => {
+//   User.findOne({
+//     attributes: { exclude: ['password'] },
+//     where: {
+//       id: req.params.id
+//     }
+//   })
+//     .then(dbUserData => {
+//       if (!dbUserData) {
+//         res.status(404).json({ message: 'No user found with this id' });
+//         return;
+//       }
+//       res.json(dbUserData);
+//     })
+//     .catch(err => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
-router.get('/:id', (req, res) => {
+// find if the username already existed
+router.get('/:username', (req, res) => {
   User.findOne({
-    attributes: { exclude: ['password'] },
     where: {
-      id: req.params.id
+      username: req.params.username
     }
   })
     .then(dbUserData => {
       if (!dbUserData) {
-        res.status(404).json({ message: 'No user found with this id' });
-        return;
+        res.json({ 
+          message: 'Username not avaliable',
+          canCreate: true
+        });
       }
-      res.json(dbUserData);
+      else{
+        res.json({ 
+          message: 'Username already existed',
+          canCreate: false
+        });
+
+      }
     })
     .catch(err => {
       console.log(err);
@@ -60,6 +88,9 @@ router.post('/login', (req, res) => {
       req.session.loggedIn = true;
       req.session.inRoom = [];
       req.session.save() ;
+
+      // Loop untill session finished saving
+      while (!req.session){}
       res.json({ message: 'You are now logged in!' });
       
   });
