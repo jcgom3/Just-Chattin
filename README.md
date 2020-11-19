@@ -71,4 +71,4 @@ N/A
   * [My GitHub Profile](https://github.com/jcgom3)
   * [My Github Project Repository](https://github.com/jcgom3/Just-Chattin)
   * [My Github Deployed IO](https://jcgom3.github.io/Just-Chattin)
-  * Email us at: [Jcgom3@gmail.com](mailto:Jcgom3@gmail.com) with questions or make an issue about this project.
+  * Email us at: [Jcgom3@gmail.com](mailto:Jcgom3@gmail.com),[tranvinh144@gmail.com](mailto:tranvinh144@gmail.com ), [Ienglehart13@gmail.com](mailto:Ienglehart13@gmail.com) with questions or make an issue about this project.
