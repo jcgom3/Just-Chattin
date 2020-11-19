@@ -17,7 +17,7 @@ async function loginFormHandler(event) {
             // Some delay is needed so that the server can update the session cookie
             setTimeout(()=>{
                 document.location.replace('/')
-            },1000);
+            },100);
         } else {
             let result = await response.json()
             alert(result.message)
