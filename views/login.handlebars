@@ -1,17 +1,32 @@
-<form class="login-form">
-  <div>
-    <label for="email-login">Email:</label>
-    <input type="text" id="email-login" />
-  </div>
-  <div>
-    <label for="password-login">Password:</label>
-    <input type="password" id="password-login" />
-  </div>
-  <div>
-    <button type="submit">Login</button>
-  </div>
-</form>
+{{!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+      integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+      crossorigin="anonymous"
+    />
+  
+  </head> --}}
 
-<a href="/signup">Sign up instead?</a>
+  <link rel="stylesheet" href="css/loginStyle.css" />
+  <form class="login-form">
+    <h1>Login</h1>
 
-<script src="public/js/login.js"></script>
+    <input type="text" class="input-area" id="email-login" placeholder="Username" />
+    <input type="password" class="input-area" id="password-login" placeholder="Password" />
+    
+    <div>
+      <button class="submit-button" type="submit">Login</button>
+    </div>
+  </form>
+  
+  <div>
+   <a class="signup-redirect" href="/signup">Sign up instead?</a>
+  </div>
+  <script src="js/login.js"></script>
+
+{{!-- </html> --}}

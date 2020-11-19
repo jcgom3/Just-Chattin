@@ -4,52 +4,15 @@ const router = require('express').Router();
 
 router.get('/', (req, res) => {
 
-      res.render('homepage')
+  if (req.session.loggedIn){
+    res.render('selectRoom',{
+      // paste room to be rendered here
+      loggedIn: req.session.loggedIn
+    });
+  }
+  else res.redirect('/login');
         
 });
-
-// router.get('/post/:id', (req, res) => {
-//     Post.findOne({
-//       where: {
-//         id: req.params.id
-//       },
-//       attributes: [
-//         'id',
-//         'post_text',
-//         'title',
-//         'created_at',
-//       ],
-//       include: [
-//         {
-//           model: User,
-//           attributes: ['username']
-//         },
-//         {
-//             model: Comment,
-//             attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-//             include: {
-//                 model: User,
-//                 attributes: ['username']
-//             }
-//         }
-//       ]
-//     })
-//       .then(dbPostData => {
-//         if (!dbPostData) {
-//           res.status(404).json({ message: 'No post found with this id' });
-//           return;
-//         }
-//         const post = dbPostData.get({ plain: true });
-//         res.render('single-post', {
-//             post,
-//             loggedIn: req.session.loggedIn
-//           });
-//       })
-//       .catch(err => {
-//         console.log(err);
-//         res.status(500).json(err);
-//       });
-//   });
 
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
@@ -68,5 +31,16 @@ router.get('/signup', (req, res) => {
 
   res.render('signup');
 });
+
+router.get('/chat/:room', (req, res) => {
+  if (req.session.loggedIn){
+    res.render('chat',{
+      user_id: req.session.user_id
+    });
+  }
+  else res.redirect('/login');
+  
+  // console.log(req.session);
+})
 
 module.exports = router;

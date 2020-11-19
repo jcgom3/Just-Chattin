@@ -2,16 +2,21 @@ const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages');
 const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
+const user_id = document.getElementById('chat-window').dataset.id;
 
-// Get username and room from URL
-const { username, room } = Qs.parse(location.search, {
-  ignoreQueryPrefix: true
-});
+const room = window.location.toString().split('/')[
+    window.location.toString().split('/').length - 1
+  ];
 
 const socket = io();
 
 // Join chatroom
-socket.emit('joinRoom', { username, room });
+socket.emit('joinRoom', { room });
+
+socket.on('already joined',() => {
+  document.location.replace('/?redirect=true');
+  // Added query to let the homepage (select room page) knows
+})
 
 // Get room and users
 socket.on('roomUsers', ({ room, users }) => {
@@ -21,12 +26,20 @@ socket.on('roomUsers', ({ room, users }) => {
 
 // Message from server
 socket.on('message', message => {
-  console.log(message);
+  // console.log(message);
   outputMessage(message);
 
   // Scroll down
   chatMessages.scrollTop = chatMessages.scrollHeight;
 });
+
+socket.on('user logout',id =>{
+  if (id.toString() === user_id) {
+    setTimeout(()=>{
+      document.location.replace('/')
+  },100);
+  }
+})
 
 // Message submit
 chatForm.addEventListener('submit', e => {

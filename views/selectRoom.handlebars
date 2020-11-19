@@ -1,0 +1,22 @@
+{{!-- CSS link here --}}
+<link rel="stylesheet" href="/css/selectRoom.css" />
+
+<div class="form">
+	<h1>Please select a room below</h1>
+
+	<select name="room" id="room" class='dropdown-menu'>
+		<option value="Coding" class="dropdown-item">Coding</option>
+		<option value="Soccer" class="dropdown-item">Soccer</option>
+		<option value="Memes" class="dropdown-item">Memes</option>
+		<option value="Music" class="dropdown-item">Music</option>
+	</select>
+	<div>
+		<button type="submit" class="btn" id="join-btn">Join Chat</button>
+		<button id="logout" class="btn">Logout</button>
+	</div>
+</div>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/room.js"></script>
+<script src="/js/logout.js"></script>
