@@ -6,7 +6,7 @@ body {
     background: #dfc9e6;
 }  
 
-.login-form {
+.form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,8 +16,8 @@ body {
     border-radius: 10px;
 }
 
-.input-area{
-    background-color: #f6f6f6;
+.dropdown-menu{
+    background-color: #ccc2c2;
     border: none;
     color: #0d0d0d;
     padding: 15px 15px;
@@ -33,20 +33,11 @@ h1 {
     margin: 0 0 48px 0;
 }
 
-.signup-redirect {
-    color: white;
-    background-color: #574e4e;
-    padding: 25px 120px;
-    text-align: center;
-    -webkit-border-radius: 0 0 10px 10px;
-    border-radius: 0 0 10px 10px;
-}
-
-.submit-button {
+.btn {
     background-color: #574e4e;
     border: none;
     color: white;
-    padding: 15px 90px;
+    padding: 15px 49px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -54,6 +45,7 @@ h1 {
     font-size: 13px;
     margin: 5px;
 }
+
 .room {
     padding-left: 5px;
 

@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 :root {
-	--dark-color-a: darkgrey;
-	--dark-color-b: darkgrey;
-	--light-color: #e6e9ff;
+	--dark-color-a: rgba(39, 39, 39, 0.8);
+	--dark-color-b: rgba(75, 75, 75, 0.8);
+	--light-color: #dfc9e6;
 	--success-color: #5cb85c;
 	--error-color: #d9534f;
 }
@@ -42,7 +42,7 @@ a {
 
 .chat-container {
 	max-width: 1100px;
-	background: #fff;
+	background: var(--dark-color-b);
 	margin: 30px auto;
 	overflow: hidden;
 }
