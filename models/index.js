@@ -1,6 +1,6 @@
-const Message = require('./Messages');
-const Room = require('./Rooms.js');
-const User = require('./Users');
+const Message = require('./messages.js');
+const Room = require('./rooms.js');
+const User = require('./users.js');
 
 User.hasMany(Message);
 Message.belongsTo(User);

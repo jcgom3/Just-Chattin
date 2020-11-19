@@ -41,6 +41,9 @@ h1 {
     -webkit-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px;
 }
+.signup-redirect:hover {
+    text-decoration: underline;
+}
 
 .submit-button {
     background-color: #574e4e;
