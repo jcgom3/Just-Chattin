@@ -60,3 +60,6 @@ h1 {
     -webkit-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px;
 }
+.login-redirect:hover {
+    text-decoration: underline;
+}
