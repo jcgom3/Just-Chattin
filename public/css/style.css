@@ -38,6 +38,13 @@ a {
 	font-size: 17px;
 }
 
+.btn:hover {
+    color: #ffffff !important;
+    background: var(--dark-color-b);
+    border-color: var(--dark-color-b) !important;
+    transition: all 0.4s ease 0s;
+}
+
 /* Chat Page */
 
 .chat-container {

@@ -45,6 +45,12 @@ h1 {
     font-size: 13px;
     margin: 5px;
 }
+.submit-button:hover {
+    color: #ffffff !important;
+    background: #dfc9e6;
+    border-color: #dfc9e6 !important;
+    transition: all 0.4s ease 0s;
+}
   
 .login-redirect {
     color: white;
