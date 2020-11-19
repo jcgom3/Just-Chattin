@@ -33,7 +33,11 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/chat/:room', (req, res) => {
-  res.render('chat');
+  if (req.session.loggedIn){
+    res.render('chat');
+  }
+  else res.redirect('/login');
+  
   // console.log(req.session);
 })
 

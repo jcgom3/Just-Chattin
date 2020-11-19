@@ -54,28 +54,40 @@ const botName = 'Just Chattin Bot ';
 // Run when client connects
 io.on('connection', socket => {
   socket.on('joinRoom', ({ room }) => {
-    const username = socket.request.session.username;
-    // console.log(socket.request.session);
-    const user = userJoin(socket.id, username, room);
+    // Find index of the room inside user's cookie
+    const index = socket.request.session.inRoom.findIndex(joinedRoom => joinedRoom === room)
+    
+    // If the user already joined the room, send message to client to redirect
+    if (index !== -1){
+      socket.emit('already joined');
+    }else {
+      // If user haven't joined, add room into cookie list
+      socket.request.session.inRoom.push(room);
+      socket.request.session.save();
+      console.log(socket.request.session);
 
-    socket.join(user.room);
-
-    // Welcome current user
-    socket.emit('message', formatMessage(botName, 'Welcome to Just Chattin!'));
-
-    // Broadcast when a user connects
-    socket.broadcast
-      .to(user.room)
-      .emit(
-        'message',
-        formatMessage(botName, `${user.username} has joined the chat`)
-      );
-
-    // Send users and room info
-    io.to(user.room).emit('roomUsers', {
-      room: user.room,
-      users: getRoomUsers(user.room)
-    });
+      const username = socket.request.session.username;
+      const user = userJoin(socket.id, username, room);
+  
+      socket.join(user.room);
+  
+      // Welcome current user
+      socket.emit('message', formatMessage(botName, 'Welcome to Just Chattin!'));
+  
+      // Broadcast when a user connects
+      socket.broadcast
+        .to(user.room)
+        .emit(
+          'message',
+          formatMessage(botName, `${user.username} has joined the chat`)
+        );
+  
+      // Send users and room info
+      io.to(user.room).emit('roomUsers', {
+        room: user.room,
+        users: getRoomUsers(user.room)
+      });
+    }
   });
 
   // Listen for chatMessage
@@ -90,6 +102,14 @@ io.on('connection', socket => {
     const user = userLeave(socket.id);
 
     if (user) {
+
+      // get index of room to be removed
+      const index = socket.request.session.inRoom.findIndex(joinedRoom => joinedRoom === user.room);
+      if (index !== -1) {
+        socket.request.session.inRoom.splice(index, 1)[0];
+        socket.request.session.save();
+      }
+      
       io.to(user.room).emit(
         'message',
         formatMessage(botName, `${user.username} has left the chat`)
@@ -101,10 +121,6 @@ io.on('connection', socket => {
         users: getRoomUsers(user.room)
       });
 
-       // destroy cookie
-      //  if (socket.request.session.loggedIn) {
-      //   socket.request.session.destroy() ;
-      // };
     }
   });
 });

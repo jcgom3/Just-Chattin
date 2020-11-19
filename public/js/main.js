@@ -12,6 +12,11 @@ const socket = io();
 // Join chatroom
 socket.emit('joinRoom', { room });
 
+socket.on('already joined',() => {
+  document.location.replace('/?redirect=true');
+  // Added query to let the homepage (select room page) knows
+})
+
 // Get room and users
 socket.on('roomUsers', ({ room, users }) => {
   outputRoomName(room);
