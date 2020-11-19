@@ -36,7 +36,7 @@ h1 {
 .signup-redirect {
     color: white;
     background-color: #574e4e;
-    padding: 25px 120px;
+    padding: 25px 140px;
     text-align: center;
     -webkit-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px;
@@ -49,7 +49,7 @@ h1 {
     background-color: #574e4e;
     border: none;
     color: white;
-    padding: 15px 90px;
+    padding: 15px 107px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -63,4 +63,14 @@ h1 {
     background: #dfc9e6;
     border-color: #dfc9e6 !important;
     transition: all 0.4s ease 0s;
+}
+
+.login-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 10px;
+    color: white;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
 }
