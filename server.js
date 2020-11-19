@@ -64,7 +64,7 @@ io.on('connection', socket => {
       // If user haven't joined, add room into cookie list
       socket.request.session.inRoom.push(room);
       socket.request.session.save();
-      console.log(socket.request.session);
+      // console.log(socket.request.session);
 
       const username = socket.request.session.username;
       const user = userJoin(socket.id, username, room);
@@ -126,7 +126,7 @@ io.on('connection', socket => {
   
   socket.on('logout',()=>{
     user_id = socket.request.session.user_id;
-    console.log(user_id);
+    // console.log(user_id);
     io.emit('user logout', user_id);
   })
 });
