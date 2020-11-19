@@ -34,7 +34,9 @@ router.get('/signup', (req, res) => {
 
 router.get('/chat/:room', (req, res) => {
   if (req.session.loggedIn){
-    res.render('chat');
+    res.render('chat',{
+      user_id: req.session.user_id
+    });
   }
   else res.redirect('/login');
   

@@ -1,6 +1,8 @@
 async function logout() {
   const socket = io();
 
+  // let the server knows that the user has logout
+  socket.emit('logout');
 
   const response = await fetch('/api/users/logout', {
     method: 'post',

@@ -56,7 +56,7 @@ io.on('connection', socket => {
   socket.on('joinRoom', ({ room }) => {
     // Find index of the room inside user's cookie
     const index = socket.request.session.inRoom.findIndex(joinedRoom => joinedRoom === room)
-    
+
     // If the user already joined the room, send message to client to redirect
     if (index !== -1){
       socket.emit('already joined');
@@ -123,6 +123,12 @@ io.on('connection', socket => {
 
     }
   });
+  
+  socket.on('logout',()=>{
+    user_id = socket.request.session.user_id;
+    console.log(user_id);
+    io.emit('user logout', user_id);
+  })
 });
 
 app.use(routes)
