@@ -90,7 +90,7 @@ router.post('/login', (req, res) => {
       req.session.save() ;
 
       // Loop untill session finished saving
-      while (!req.session){}
+      while (!req.session.loggedIn){}
       res.json({ message: 'You are now logged in!' });
       
   });

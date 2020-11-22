@@ -63,19 +63,33 @@ chatForm.addEventListener('submit', e => {
 });
 
 // Output message to DOM
+let lastID = 0;
+const chatWindow = document.querySelector('.chat-messages');
 function outputMessage(message) {
-  const div = document.createElement('div');
-  div.classList.add('message');
-  const p = document.createElement('p');
-  p.classList.add('meta');
-  p.innerText = message.username;
-  p.innerHTML += `<span>${message.time}</span>`;
-  div.appendChild(p);
-  const para = document.createElement('p');
-  para.classList.add('text');
-  para.innerText = message.text;
-  div.appendChild(para);
-  document.querySelector('.chat-messages').appendChild(div);
+  let newMessage;
+  if (user_id === message.user_id.toString()){
+     newMessage =`<div class="message" data-id="${message.user_id}" style="width:85%; margin-left:auto;">
+                    <p class="meta"> ${message.username} <span>${message.time}</span></p>
+                    <p class="text">${message.text}</p>
+                  </div>`
+  } else{
+    newMessage =`<div class="message" data-id="${message.user_id}" style="width:85%;">
+                    <p class="meta"> ${message.username} <span>${message.time}</span></p>
+                    <p class="text">${message.text}</p>
+                  </div>`
+  }
+  if (chatWindow.lastChild){
+    if (lastID === message.user_id) chatWindow.lastChild.innerHTML += `<p class="text" style="margin-top:10px;">${message.text}</p>`;
+    else chatWindow.innerHTML += newMessage;
+    // console.log(chatWindow.lastChild.dataset.id);
+  }
+  else chatWindow.innerHTML += newMessage;
+  console.log(message);
+  lastID = message.user_id;
+  if (lastID === 0 ){
+    // Remove width for bot message
+    chatWindow.lastChild.style.width = null;
+  }
 }
 
 // Add room name to DOM
