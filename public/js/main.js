@@ -68,12 +68,12 @@ const chatWindow = document.querySelector('.chat-messages');
 function outputMessage(message) {
   let newMessage;
   if (user_id === message.user_id.toString()){
-     newMessage =`<div class="message" data-id="${message.user_id}" style="width:85%; margin-left:auto;">
+     newMessage =`<div class="message" style="background-color:#dfc9e6;" data-id="${message.user_id}" style="width:85%; margin-left:auto;">
                     <p class="meta"> ${message.username} <span>${message.time}</span></p>
                     <p class="text">${message.text}</p>
                   </div>`
   } else{
-    newMessage =`<div class="message" data-id="${message.user_id}" style="width:85%;">
+    newMessage =`<div class="message" style="background-color:#d3acdf;" data-id="${message.user_id}" style="width:85%;">
                     <p class="meta"> ${message.username} <span>${message.time}</span></p>
                     <p class="text">${message.text}</p>
                   </div>`
