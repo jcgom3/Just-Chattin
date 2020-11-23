@@ -84,7 +84,6 @@ function outputMessage(message) {
     // console.log(chatWindow.lastChild.dataset.id);
   }
   else chatWindow.innerHTML += newMessage;
-  console.log(message);
   lastID = message.user_id;
   if (lastID === 0 ){
     // Remove width for bot message
