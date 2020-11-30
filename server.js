@@ -50,6 +50,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 
 const botName = 'Just Chattin Bot ';
+const botId = 0;
 
 // Run when client connects
 io.on('connection', socket => {
@@ -67,19 +68,20 @@ io.on('connection', socket => {
       // console.log(socket.request.session);
 
       const username = socket.request.session.username;
-      const user = userJoin(socket.id, username, room);
+      const user_id = socket.request.session.user_id;
+      const user = userJoin(socket.id, username, user_id, room);
   
       socket.join(user.room);
   
       // Welcome current user
-      socket.emit('message', formatMessage(botName, 'Welcome to Just Chattin!'));
+      socket.emit('message', formatMessage(botName, 0, 'Welcome to Just Chattin!'));
   
       // Broadcast when a user connects
       socket.broadcast
         .to(user.room)
         .emit(
           'message',
-          formatMessage(botName, `${user.username} has joined the chat`)
+          formatMessage(botName, 0, `${user.username} has joined the chat`)
         );
   
       // Send users and room info
@@ -94,7 +96,7 @@ io.on('connection', socket => {
   socket.on('chatMessage', msg => {
     const user = getCurrentUser(socket.id);
 
-    io.to(user.room).emit('message', formatMessage(user.username, msg));
+    io.to(user.room).emit('message', formatMessage(user.username, user.user_id, msg));
   });
 
   // Runs when client disconnects
@@ -112,7 +114,7 @@ io.on('connection', socket => {
       
       io.to(user.room).emit(
         'message',
-        formatMessage(botName, `${user.username} has left the chat`)
+        formatMessage(botName, 0, `${user.username} has left the chat`)
       );
 
       // Send users and room info
